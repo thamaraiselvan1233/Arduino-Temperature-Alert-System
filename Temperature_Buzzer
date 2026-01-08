@@ -1,0 +1,26 @@
+
+int tempPin = A0;
+int buzzerPin = 8;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  int sensorValue = analogRead(tempPin);
+
+  Serial.print("Sensor Value = ");
+  Serial.println(sensorValue);
+
+  // High temperature condition
+  if (sensorValue < 700) {  
+    digitalWrite(buzzerPin, HIGH);
+    Serial.println("Buzzer Status: ON (High Temperature)");
+  } else {
+    digitalWrite(buzzerPin, LOW);
+    Serial.println("Buzzer Status: OFF (Normal Temperature)");
+  }
+
+  delay(1000);
+}
